@@ -1,0 +1,59 @@
+
+CREATE_TABLE students id,name,age,major
+CREATE_TABLE courses course_id,course_name,instructor
+CREATE_TABLE students id,name,age,majorrrr
+CREATE_TABLE id,name,age,majorrrr
+
+
+
+INSERT students 1,John Doe,20,CS
+INSERT students 2,Jane Smith,22,EE
+INSERT students 3,Alan Turing,30,CS
+INSERT courses 101,Math,Dr. Brown
+INSERT courses 102,Physics,Dr. Smith
+INSERT courses 103,Chemistry,Dr. White
+INSERT teachers 1,Dr. Smith  
+INSERT students 4  
+INSERT test 1,John Doe,20,CS
+
+
+SELECT students id,name WHERE {"major": "CS"}  
+SELECT courses * WHERE {"instructor": "Dr. Smith"} 
+SELECT students * WHERE {"age": "22"} 
+SELECT teachers * WHERE {"name": "Dr. Smith"}  
+SELECT students invalid_column WHERE {"major": "CS"}  
+SELECT students * WHERE {"nonexistent_column": "value"}  
+
+
+UPDATE students {"major": "SE"} WHERE {"name": "John Doe"}  
+UPDATE students {"age": "45", "name": "Alan"} WHERE {"age": "30"}  
+UPDATE courses {"instructor": "Dr. Johnson"} WHERE {"course_name": "Math"}  
+UPDATE teachers {"name": "Dr. Brown"} WHERE {"department": "CS"}  
+UPDATE students {"invalid_column": "value"} WHERE {"name": "John Doe"}  
+UPDATE students {"major": "SE"} WHERE {"invalid_column": "value"} 
+UPDATE test {"major": "SE"} WHERE {"name": "John Doe"}  
+ 
+
+
+DELETE students WHERE {"name": "Jane Smith"} 
+DELETE courses WHERE {"course_id": "102"}  
+DELETE students WHERE {"invalid_column": "value"}  
+DELETE teachers WHERE {"name": "Dr. Brown"}  
+
+
+COUNT students WHERE {"major": "CS"}  
+COUNT students WHERE {"age": "22"}  
+COUNT courses WHERE {"instructor": "Dr. White"} 
+COUNT teachers WHERE {"name": "Dr. Smith"}  
+COUNT students WHERE {"invalid_column": "value"} 
+COUNT students WHERE *
+COUNT courses WHERE *
+
+
+JOIN students,courses ON major  
+JOIN students,courses ON course_id  
+JOIN students,courses ON name
+
+DELETE students  
+DELETE courses
+ 
